@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cheriozi Braids — Home</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <div class="brand">cheriozibraids</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO / HOME -->
+  <section id="home" class="hero">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1>Beautiful Braids, Beautiful You</h1>
+        <p>Your beauty, our passion</p>
+        <a class="btn" href="#contact">Book an appointment</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2>About</h2>
+      <p>
+        Cheriozi Braids is a professional braiding and styling salon offering
+        custom braids, protective styles, and hair care advice. We focus on
+        clean lines, long-lasting styles, and healthy hair practices.
+      </p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="section gallery">
+    <div class="container">
+      <h2>Gallery</h2>
+      <div class="grid">
+        <figure><img src="images/gallery1.jpg" alt="Braid style 1"></figure>
+        <figure><img src="images/gallery2.jpg" alt="Braid style 2"></figure>
+        <figure><img src="images/gallery3.jpg" alt="Braid style 3"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Phone: +[country code] [number]  •  Email: hello@cheriozibraids.com</p>
+      <form class="contact-form" action="#" method="POST">
+        <label>
+          Name
+          <input type="text" name="name" placeholder="Your name" required>
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="4" placeholder="What service do you want?" required></textarea>
+        </label>
+        <button type="submit" class="btn">Send message</button>
+      </form>
+      <p class="note">Note: contact form requires backend to send messages; this is a placeholder.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <small>© <span id="year"></span> cheriozibraids — All rights reserved</small>
+    </div>
+  </footer>
+
+  <script>
+    // small script to update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
