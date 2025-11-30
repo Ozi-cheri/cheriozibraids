@@ -7,15 +7,14 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-
-  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">CherioziBraids</a>
 
-      <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle4">
+      <input type="checkbox" id="navToggle" class="nav-toggle" aria-label="Toggle navigation">
+      <label for="navToggle" class="menu-toggle" aria-hidden="true">
         <span class="hamburger"></span>
-      </button>
+      </label>
 
       <nav class="site-nav" id="siteNav4">
         <ul>
@@ -28,42 +27,28 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
   <main class="container">
     <section class="contact-section">
-
       <h2>Get in touch</h2>
-
-      <!-- CARD 1: Get in touch -->
-      <div class="card contact-card">
-        <p class="lead">
-          For bookings, workshops or general enquiries, send us a message or call:
-          <strong>+123 456 7890</strong>. We aim to respond within 24 hours.
-        </p>
-      </div>
+      <p class="lead">For bookings or general enquiries call <strong>+123 456 7890</strong> or send a message below.</p>
 
       <div class="contact-grid">
-
-        <!-- CARD 2: Visit us -->
-        <div class="card contact-info">
+        <div class="contact-card contact-info">
           <h3>Visit us</h3>
           <p>123 Salon Street, City</p>
-
           <h4>Opening hours</h4>
           <p>Mon - Sat: 9:00 — 18:00</p>
         </div>
 
-        <!-- CONTACT FORM (no card so it stays clean) -->
-        <form class="contact-form" action="#" method="post"
-        onsubmit="alert('This is a demo form — hook it up to a server or email service.')">
+        <form class="contact-form" action="#" method="post" onsubmit="alert('Demo: connect to real backend to send.')">
           <label>
             Your name
-            <input type="text" name="name" required />
+            <input type="text" name="name" required>
           </label>
 
           <label>
             Email
-            <input type="email" name="email" required />
+            <input type="email" name="email" required>
           </label>
 
           <label>
@@ -73,14 +58,16 @@
 
           <button class="btn" type="submit">Send Message</button>
         </form>
-
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner container">
+      <div class="footer-about">
+        <h4>Cheriozi Braids</h4>
+        <p class="muted">Hand-crafted braids and salon care.</p>
+      </div>
 
       <div class="socials">
         <a href="#" class="social-btn">Facebook</a>
@@ -91,4 +78,5 @@
       <p class="muted">&copy; 2025 Cheriozi Braids. All rights reserved.</p>
     </div>
   </footer>
-
+</body>
+</html>
