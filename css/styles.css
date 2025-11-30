@@ -1,171 +1,304 @@
-/* Minimal, modern layout. Keep comments minimal. */
-
 :root{
-  --accent: #e6b800;
-  --bg: #f6f6f6;
+  --bg: #fff7f1;        /* soft warm background */
+  --muted: #6b6b6b;
+  --accent: #2c7a7b;    /* your accent (teal) */
+  --accent-2: #b56bff;  /* secondary color for active links (subtle) */
+  --container-max: 1100px;
+  --gap: 1.25rem;
+  --radius: 12px;
+  --header-h: 72px;
   --text: #222;
-  --max-width: 1100px;
 }
 
-*{box-sizing:border-box}
+/* ---------------- RESET / BASE ---------------- */
+*{box-sizing: border-box; margin: 0; padding: 0;}
+html,body{height:100%;}
 body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color:var(--text);
   background:var(--bg);
-  -webkit-font-smoothing:antialiased;
+  line-height:1.45;
 }
 
+/* ---------------- CONTAINER ---------------- */
 .container{
-  max-width:var(--max-width);
+  max-width:var(--container-max);
   margin:0 auto;
-  padding:2rem;
+  padding:0 1rem;
+  width:100%;
 }
 
-/* header/nav */
-.site-header{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:20;
-  background:rgba(255,255,255,0.6);
-  backdrop-filter: blur(6px);
-  border-bottom:1px solid rgba(0,0,0,0.05);
+/* ---------------- HEADER ---------------- */
+header, .site-header{
+  background: rgba(255,255,255,0.96);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 60;
 }
-.nav{
+
+.header-inner{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  max-width:var(--max-width);
-  margin:0 auto;
-  padding:0.6rem 1rem;
+  height:var(--header-h);
+  gap:1rem;
 }
-.brand{
+
+/* logo left */
+.logo{
   font-weight:700;
-  letter-spacing:1px;
-  text-transform:lowercase;
+  letter-spacing:0.4px;
+  text-decoration:none;
+  color:var(--text);
+  font-size:1.125rem;
+  display:inline-block;
 }
-.nav-links{
+
+/* nav: desktop */
+.site-nav {
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
+
+/* site-nav when using ul */
+.site-nav ul{
   list-style:none;
   display:flex;
   gap:1rem;
   margin:0;
   padding:0;
+  align-items:center;
 }
-.nav-links a{
+.site-nav li{ /* ensure items don't wrap oddly */
+  white-space:nowrap;
+}
+.site-nav a{
   text-decoration:none;
-  color:inherit;
-  padding:0.4rem 0.6rem;
-  border-radius:6px;
+  color:var(--text);
+  padding:0.45rem 0.65rem;
+  border-radius:8px;
+  font-weight:600;
+  display:inline-block;
 }
-.nav-links a:hover{background:rgba(230,184,0,0.08)}
+.site-nav a:hover{ background: rgba(40,40,40,0.06); }
+.site-nav a.active{ background: linear-gradient(90deg, rgba(44,122,123,0.12), rgba(181,107,255,0.06)); }
 
-/* HERO */
-.hero{
-  height:85vh;
-  min-height:480px;
-  display:flex;
+/* ---------------- HAMBURGER (checkbox method) ----------------
+   HTML uses:
+     <input id="navToggle" class="nav-toggle" type="checkbox">
+     <label for="navToggle" class="menu-toggle"> ... </label>
+     <nav class="site-nav"> ... </nav>
+   The CSS below hides nav on mobile and reveals it when checkbox is checked.
+*/
+.nav-toggle{ display:none; }
+
+/* hamburger visuals (the label) */
+.menu-toggle{
+  display:none;            /* shown on small screens */
+  width:40px;
+  height:40px;
+  border-radius:8px;
+  background:transparent;
+  border:0;
+  cursor:pointer;
   align-items:center;
   justify-content:center;
-  color:white;
-  /* background image */
-  background-image: url('../images/hero.jpg');
+}
+.menu-toggle .hamburger,
+.menu-toggle .hamburger::before,
+.menu-toggle .hamburger::after{
+  content: "";
+  display:block;
+  width:22px;
+  height:2.5px;
+  background:var(--text);
+  border-radius:2px;
+}
+.menu-toggle .hamburger{ position:relative; }
+.menu-toggle .hamburger::before{ position:absolute; top:-7px; left:0; }
+.menu-toggle .hamburger::after{ position:absolute; top:7px; left:0; }
+
+/* ---------------- HERO ---------------- */
+.hero{
+  min-height:62vh;
+  display:flex;
+  align-items:center;
+  background-image: url("../images/hero.jpg"); /* place hero.jpg in /images */
   background-size:cover;
   background-position:center;
   position:relative;
-  margin-top:64px; /* to avoid header overlap on small screens */
+  color:white;
 }
-.hero-overlay{
-  width:100%;
-  height:100%;
-  background:linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.5));
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.45));
 }
+.hero-overlay{ position:relative; z-index:1; padding:4rem 1rem; }
 .hero-content{
-  text-align:center;
-  padding:2rem;
-  max-width:900px;
+  max-width:720px;
+  margin-top:18vh;
 }
-.hero h1{
-  font-size:clamp(2rem, 4vw, 3.2rem);
-  margin:0 0 0.6rem 0;
-}
-.hero p{
-  margin:0 0 1.2rem 0;
-  font-size:1.05rem;
-}
+.hero h1{ margin:0 0 .6rem; font-size:clamp(1.6rem, 4vw, 2.8rem); line-height:1.05; }
+.hero p{ margin:0 0 1rem; color:rgba(255,255,255,0.92); }
 .btn{
   display:inline-block;
   background:var(--accent);
-  color:#111;
-  padding:0.6rem 1rem;
-  border-radius:8px;
+  color:white;
   text-decoration:none;
-  font-weight:600;
-}
-
-/* Sections */
-.section{
-  padding:4rem 0;
-}
-.about p{line-height:1.6}
-h2{
-  margin-top:0;
-  text-transform:uppercase;
-  font-size:0.95rem;
-  letter-spacing:1px;
-}
-
-/* Gallery */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:1rem;
-  margin-top:1rem;
-}
-.grid img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+  padding:.6rem 1rem;
   border-radius:8px;
-  display:block;
 }
 
-/* Contact form */
-.contact-form{
+/* ---------------- CARDS ---------------- */
+.cards{
   display:grid;
-  gap:0.8rem;
-  max-width:600px;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  padding:2rem 0 4rem;
 }
-.contact-form label{
-  display:flex;
-  flex-direction:column;
-  font-size:0.9rem;
-}
-.contact-form input,
-.contact-form textarea{
-  padding:0.6rem;
-  border:1px solid rgba(0,0,0,0.12);
-  border-radius:6px;
-  margin-top:0.4rem;
-  font-size:1rem;
-}
-
-/* Footer */
-.footer{
+.card{
   background:#fff;
-  border-top:1px solid rgba(0,0,0,0.05);
-  padding:1.2rem 0;
-  text-align:center;
-  font-size:0.9rem;
+  border-radius:var(--radius);
+  padding:1.25rem;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
 }
 
-/* responsive tweaks */
-@media (max-width:700px){
-  .nav-links{display:none}
-  .hero{height:72vh; margin-top:56px}
-  .container{padding:1rem}
+/* ---------------- ABOUT ---------------- */
+.about-section{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2rem;
+  padding:4rem 0;
+  min-height:60vh;
+  position:relative;
+}
+.about-left{ align-self:start; }
+.about-right{ position:relative; display:flex; justify-content:flex-end; align-items:center; }
+
+/* floating second text card */
+.floating-text{
+  width:350px;
+  background:#fff;
+  padding:1.2rem;
+  border-radius:12px;
+  box-shadow:0 8px 22px rgba(0,0,0,0.08);
+  position:absolute;
+  right:0;
+  top:85%;
+  transform:translateY(-50%);
+}
+
+/* ---------------- GALLERY ---------------- */
+.cards-gallery{
+  display:grid;
+  gap:1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top:1.5rem;
+}
+.gallery-card{
+  background:#fff;
+  padding:1rem;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  text-align:center;
+  transition: transform .18s ease;
+}
+.gallery-card img{ width:100%; border-radius:10px; object-fit:cover; margin-bottom:0.8rem; }
+.gallery-card h4{ font-size:1rem; font-weight:600; margin:0; }
+
+/* ---------------- CONTACT ---------------- */
+.contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1rem; }
+.contact-card { /* shared card style for contact summary / visit us */
+  background:#fff;
+  border-radius:12px;
+  padding:1.25rem;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+.contact-form label{ display:block; margin-bottom:0.6rem; }
+.contact-form input, .contact-form textarea{ width:100%; padding:0.6rem; border:1px solid #ddd; border-radius:8px; }
+
+/* ---------------- FOOTER (consistent) ---------------- */
+footer, .site-footer{
+  margin-top:auto;
+  padding:1.75rem 0;
+  background:#222;
+  color:#fff;
+  border-top:1px solid rgba(255,255,255,0.03);
+}
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.footer-about h4 { margin:0 0 0.25rem; color:#fff; }
+.socials{ display:flex; gap:0.6rem; align-items:center; }
+.social-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  background:transparent;
+  color: #fff;
+  text-decoration:none;
+  padding:0.4rem 0.6rem;
+  border-radius:8px;
+  font-weight:600;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.social-btn:hover{ background: rgba(255,255,255,0.04); }
+
+/* small helpers */
+.muted{ color:var(--muted); }
+.lead{ font-size:1.05rem; }
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 900px){
+
+  /* show hamburger (label) */
+  .menu-toggle{ display:flex; align-items:center; justify-content:center; }
+
+  /* hide normal nav by default on mobile */
+  .site-nav{ display:none; }
+
+  /* when checkbox is checked, show the nav */
+  .nav-toggle:checked + .menu-toggle + .site-nav{
+    display:flex;
+    position:absolute;
+    right:16px;
+    top:var(--header-h);
+    background:#fff;
+    width:220px;
+    border-radius:10px;
+    box-shadow:0 8px 26px rgba(0,0,0,0.12);
+    padding:0.75rem;
+    flex-direction:column;
+    z-index:120;
+  }
+
+  /* mobile nav list */
+  .site-nav ul{ flex-direction:column; gap:0; padding:0.25rem 0; }
+  .site-nav a{ display:block; padding:0.65rem 0.85rem; color:var(--text); }
+
+  /* stack about section on small */
+  .about-section{ grid-template-columns:1fr; }
+  .floating-text{ position:static; transform:none; width:100%; margin-top:1.2rem; }
+
+  /* stack cards */
+  .cards{ grid-template-columns:1fr; }
+  .cards-gallery{ grid-template-columns: 1fr; }
+  .contact-grid{ grid-template-columns:1fr; }
+}
+
+/* very small screens */
+@media (max-width:420px){
+  .hero-content{ margin-top:8vh; }
+  .hero{ min-height:48vh; }
 }

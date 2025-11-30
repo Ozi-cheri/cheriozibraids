@@ -7,84 +7,69 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-
   <header class="site-header">
-    <nav class="nav">
-      <div class="brand">cheriozibraids</div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="container header-inner">
+      <a class="logo" href="index.html">CherioziBraids</a>
+
+      <!-- checkbox hamburger (no JS) -->
+      <input type="checkbox" id="navToggle" class="nav-toggle" aria-label="Toggle navigation">
+      <label for="navToggle" class="menu-toggle" aria-hidden="true">
+        <span class="hamburger"></span>
+      </label>
+
+      <nav class="site-nav" id="siteNav">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- HERO / HOME -->
-  <section id="home" class="hero">
-    <div class="hero-overlay">
-      <div class="hero-content">
-        <h1>Beautiful Braids, Beautiful You</h1>
-        <p>Your beauty, our passion</p>
-        <a class="btn" href="#contact">Book an appointment</a>
+  <main>
+    <section class="hero">
+      <div class="hero-overlay container">
+        <div class="hero-content">
+          <h1>Your beauty, our passion</h1>
+          <p>Expert braiding & salon services for every look. Book your appointment today.</p>
+          <a class="btn" href="contact.html">Book Now</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section about">
-    <div class="container">
-      <h2>About</h2>
-      <p>
-        Cheriozi Braids is a professional braiding and styling salon offering
-        custom braids, protective styles, and hair care advice. We focus on
-        clean lines, long-lasting styles, and healthy hair practices.
-      </p>
-    </div>
-  </section>
+    <section class="cards container">
+      <article class="card">
+        <h3>Styling</h3>
+        <p>From box braids to creative updos — personalized styling for every hair type.</p>
+      </article>
+      <article class="card">
+        <h3>Care</h3>
+        <p>Scalp treatments, maintenance tips, and gentle products to keep hair healthy.</p>
+      </article>
+      <article class="card">
+        <h3>Workshops</h3>
+        <p>Learn braiding basics in small group workshops — details on request.</p>
+      </article>
+    </section>
+  </main>
 
-  <!-- GALLERY -->
-  <section id="gallery" class="section gallery">
-    <div class="container">
-      <h2>Gallery</h2>
-      <div class="grid">
-        <figure><img src="images/gallery1.jpg" alt="Braid style 1"></figure>
-        <figure><img src="images/gallery2.jpg" alt="Braid style 2"></figure>
-        <figure><img src="images/gallery3.jpg" alt="Braid style 3"></figure>
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-about">
+        <h4>Cheriozi Braids</h4>
+        <p class="muted">Hand-crafted braids and salon care.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <p>Phone: +[country code] [number]  •  Email: hello@cheriozibraids.com</p>
-      <form class="contact-form" action="#" method="POST">
-        <label>
-          Name
-          <input type="text" name="name" placeholder="Your name" required>
-        </label>
-        <label>
-          Message
-          <textarea name="message" rows="4" placeholder="What service do you want?" required></textarea>
-        </label>
-        <button type="submit" class="btn">Send message</button>
-      </form>
-      <p class="note">Note: contact form requires backend to send messages; this is a placeholder.</p>
-    </div>
-  </section>
+      <div class="socials">
+        <a href="#" class="social-btn">Facebook</a>
+        <a href="#" class="social-btn">Instagram</a>
+        <a href="#" class="social-btn">TikTok</a>
+      </div>
 
-  <footer class="footer">
-    <div class="container">
-      <small>© <span id="year"></span> cheriozibraids — All rights reserved</small>
+      <p class="muted">&copy; 2025 Cheriozi Braids. All rights reserved.</p>
     </div>
   </footer>
-
-  <script>
-    // small script to update year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-
 </body>
 </html>
