@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact — Cheriozi Braids</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
   <header class="site-header">
@@ -40,24 +42,33 @@
           <p>Mon - Sat: 9:00 — 18:00</p>
         </div>
 
-        <form class="contact-form" action="#" method="post" onsubmit="alert('Demo: connect to real backend to send.')">
-          <label>
-            Your name
-            <input type="text" name="name" required>
-          </label>
+       <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
 
-          <label>
-            Email
-            <input type="email" name="email" required>
-          </label>
+  <!-- REQUIRED: Your access key -->
+  <input type="hidden" name="access_key" value="b5d11377-1f70-466b-8c87-ab64c0cc623b">
+  <input type="hidden" name="redirect" value="thankyou.html">
+  <input type="hidden" name="redirect" value="https://ozi-cheri.github.io/cheriozibraids/thankyou.html" />
 
-          <label>
-            Message
-            <textarea name="message" rows="5" required></textarea>
-          </label>
 
-          <button class="btn" type="submit">Send Message</button>
-        </form>
+
+  <label>
+    Your name
+    <input type="text" name="name" required />
+  </label>
+
+  <label>
+    Email
+    <input type="email" name="email" required />
+  </label>
+
+  <label>
+    Message
+    <textarea name="message" rows="5" required></textarea>
+  </label>
+
+  <button class="btn" type="submit">Send Message</button>
+</form>
+
       </div>
     </section>
   </main>
@@ -69,11 +80,20 @@
         <p class="muted">Hand-crafted braids and salon care.</p>
       </div>
 
-      <div class="socials">
-        <a href="#" class="social-btn">Facebook</a>
-        <a href="#" class="social-btn">Instagram</a>
-        <a href="#" class="social-btn">TikTok</a>
-      </div>
+      <div class="social-icons">
+  <a href="https://facebook.com/yourpage" target="_blank">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <a href="https://instagram.com/yourpage" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <a href="https://tiktok.com/@yourpage" target="_blank">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
+
 
       <p class="muted">&copy; 2025 Cheriozi Braids. All rights reserved.</p>
     </div>
